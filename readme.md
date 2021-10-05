@@ -46,3 +46,7 @@ For getting the match heights for `139`, you should run:
 ```
 yarn start 139
 ```
+Or you can use node too:
+```
+node index.js 139
+```

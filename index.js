@@ -2,7 +2,6 @@ const {
     getMatchingPropSum,
     getDataFile,
     processData,
-    getMatchingPairs,
     formatOutput,
 } = require('./main');
 
@@ -15,6 +14,10 @@ async function main(sum) {
 }
 
 if (process.argv.length === 3) {
+    if (Number.isNaN(+process.argv[2])) {
+        console.error('Parameter should be a number, you entered:', process.argv[2]);
+        process.exit(1);
+    }
     main(+process.argv[2])
         .then(() => {
             process.exit(0);

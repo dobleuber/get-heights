@@ -30,22 +30,24 @@ function getMatchingPropSum(data, sum) {
     }
 
     const matchingPairs = getMatchingPairs(keys, sum);
-    console.log(`Found ${matchingPairs.length} matching pairs`);
     
     matchingPairs.forEach(([v1, v2]) => {
         players[v1].forEach(p1 => {
             players[v2].forEach(p2 => {
                 if (p1.first_name !== p2.first_name && p1.last_name !== p2.last_name) {
+                    // Sorting by last name
                     result.push([
-                        `${p1.first_name} ${p1.last_name}`,
-                        `${p2.first_name} ${p2.last_name}`
-                    ]);
+                        {name: `${p1.first_name} ${p1.last_name}`, sort: p1.last_name},
+                        {name: `${p2.first_name} ${p2.last_name}`, sort: p2.last_name},
+                    ].sort((a, b) => {
+                        return a.sort > b.sort ? 1 : -1;
+                    }));
                 }
             });
-        })
+        });
     });
 
-    return result;
+    return removeDuplicates(result.map(r => r.map(p => p.name)));
 }
 
 async function getDataFile() {
@@ -83,6 +85,14 @@ function formatOutput(pairs) {
     }
 
     pairs.forEach(([p1, p2]) => console.log(`- ${p1}\t\t${p2}`));
+}
+
+function removeDuplicates(arr) {
+    return arr.filter(([p1, p2], index, self) =>
+        index === self.findIndex(([sp1, sp2]) => (
+            (p1 === sp1 && p2 === sp2) || (p1 === sp2 && p2 === sp1)
+        ))
+    );
 }
 
 module.exports = {

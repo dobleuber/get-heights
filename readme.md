@@ -1,4 +1,5 @@
-## Project
+# Match Heights
+## Project description
 
 The project is to write a function that searches through NBA player heights
 based on user input. The raw data is taken from
@@ -25,3 +26,23 @@ should be handled appropriately. Though not strictly required, demonstrating
 comfort in writing unit tests will make your submission stand out. This is
 _not_ a closed book test. You are encouraged to reach out with any questions
 that you come across.
+
+## Project setup
+
+This projects was written in nodejs `v14.16.1`.
+`yarn` is preferred to manage dependencies.
+
+After download the project, please install the dependencies by running:
+```
+yarn
+```
+
+You can run the test by running:
+```
+yarn test
+```
+
+For getting the match heights for `139`, you should run:
+```
+yarn start 139
+```

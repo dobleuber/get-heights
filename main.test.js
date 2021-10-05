@@ -88,34 +88,34 @@ and a list of players matching that value`, () => {
             expect(result).toEqual([]);
         });
 
-        it('should return 2 pairs for 150', ()=> {
+        it('should return 4 pairs for 150', ()=> {
             const result = getMatchingPropSum(expectedData, 150);
-            expect(result).toEqual([["Rafer Alston", "Hassan Adams"], ["Rafer Alston", "Tony Allen"]]);
+            expect(result).toEqual([
+                [ 'Hassan Adams', 'Rafer Alston' ],
+                [ 'Tony Allen', 'Rafer Alston'],
+                [ 'Hassan Adams', 'Marcus Banks'],
+                [ 'Tony Allen', 'Marcus Banks' ]
+            ]);
         });
 
-        it('should return "[]" for 148', ()=> {
+        it('should return 1 pairs for 148', ()=> {
             const result = getMatchingPropSum(expectedData, 148);
-            expect(result).toEqual([]);
+            expect(result).toEqual([["Rafer Alston", "Marcus Banks"]]);
         });
 
         it('should return pairs with the same height', ()=> {
             const result = getMatchingPropSum(expectedData, 154);
             expect(result).toEqual([
-                [ 'Rafer Alston', 'Joe Alexander' ],
+                [ 'Joe Alexander', 'Rafer Alston' ],
+                [ 'Joe Alexander', 'Marcus Banks' ],
                 [ 'Hassan Adams', 'Morris Almond' ],
                 [ 'Tony Allen', 'Morris Almond' ],
                 [ 'Alex Acker', 'Arron Afflalo' ],
                 [ 'Alex Acker', 'Maurice Ager' ],
                 [ 'Alex Acker', 'Ray Allen' ],
-                [ 'Arron Afflalo', 'Alex Acker' ],
                 [ 'Arron Afflalo', 'Maurice Ager' ],
                 [ 'Arron Afflalo', 'Ray Allen' ],
-                [ 'Maurice Ager', 'Alex Acker' ],
-                [ 'Maurice Ager', 'Arron Afflalo' ],
-                [ 'Maurice Ager', 'Ray Allen' ],
-                [ 'Ray Allen', 'Alex Acker' ],
-                [ 'Ray Allen', 'Arron Afflalo' ],
-                [ 'Ray Allen', 'Maurice Ager' ]
+                [ 'Maurice Ager', 'Ray Allen' ]
               ]);
         });
     });

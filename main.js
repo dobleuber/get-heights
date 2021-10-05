@@ -90,7 +90,7 @@ function formatOutput(pairs) {
 function removeDuplicates(arr) {
     return arr.filter(([p1, p2], index, self) =>
         index === self.findIndex(([sp1, sp2]) => (
-            (p1 === sp1 && p2 === sp2) || (p1 === sp2 && p2 === sp1)
+            p1 === sp1 && p2 === sp2
         ))
     );
 }
